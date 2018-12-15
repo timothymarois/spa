@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>SPA TESTS</title>
+
+        <!-- Fonts -->
+
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+        <script src="/src/spa.server.js" type="text/javascript"></script>
+        <script src="/src/spa.router.js" type="text/javascript"></script>
+
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="title m-b-md" id="box">
+                    SPA TESTS
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            SPA.setContainer('main',{
+                el: '#box',
+                before : function() {
+                    console.log('container: before');
+                },
+                after : function(el, data) {
+
+                    $(el).html(data);
+
+                    console.log('container: after');
+                },
+                error: function() {
+                    console.log('container: error');
+                },
+                clear: function() {
+                    console.log('container: clear');
+                }
+            });
+
+
+            SPA.setView('organizations',{
+                url : '',
+                container : 'main',
+                data : {
+
+                },
+                after : function(el, data) {
+                    console.log('route: organizations (after)');
+                },
+                clear : function(data) {
+                    console.log('route: organizations (clear)');
+                }
+            });
+
+
+            SPA.setView('contacts',{
+                url : '',
+                container : 'main',
+                data : {
+
+                },
+                after : function(el, data) {
+                    console.log('route: contacts (after)');
+                },
+                clear : function(data) {
+                    console.log('route: contacts (clear)');
+                }
+            });
+
+
+            SPA.view('organizations',{
+                url : '/tests/server.php'
+            });
+
+            // SPA.view('contacts',{url:'/tests/server.php?id=9999'});
+            // SPA.view('contacts',{url:'/tests/server.php?id=9999'});
+            // SPA.view('contacts',{url:'/tests/server.php?id=9999'});
+            // SPA.view('contacts',{url:'/tests/server.php?id=9999'});
+            // SPA.view('contacts');
+
+            setTimeout(function(){
+                SPA.view('contacts',{url:'/tests/server.php?id=9999'});
+            },1500);
+
+            setTimeout(function(){
+                SPA.view('contacts',{url:'/tests/server.php?id=45456'});
+            },2500);
+
+            // SPA.view('organizations',{ url:'/tests/server.php' });
+            // SPA.view('organizations',{ url:'/tests/server.php' });
+
+        </script>
+
+
+    </body>
+</html>
