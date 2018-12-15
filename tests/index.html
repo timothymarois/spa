@@ -128,9 +128,9 @@
             });
 
 
-            SPA.view('organizations',{
-                url : '/tests/server.php'
-            });
+            //SPA.view('organizations',{
+                //url : '/tests/server.php'
+            //});
 
             // SPA.view('contacts',{url:'/tests/server.php?id=9999'});
             // SPA.view('contacts',{url:'/tests/server.php?id=9999'});
@@ -138,16 +138,30 @@
             // SPA.view('contacts',{url:'/tests/server.php?id=9999'});
             // SPA.view('contacts');
 
-            setTimeout(function(){
-                SPA.view('contacts',{url:'/tests/server.php?id=9999'});
-            },1500);
+            //setTimeout(function(){
+                //SPA.view('contacts',{url:'/tests/server.php?id=9999'});
+            //},1500);
 
-            setTimeout(function(){
-                SPA.view('contacts',{url:'/tests/server.php?id=45456'});
-            },2500);
+            //setTimeout(function(){
+                //SPA.view('contacts',{url:'/tests/server.php?id=45456'});
+            //},2500);
 
             // SPA.view('organizations',{ url:'/tests/server.php' });
             // SPA.view('organizations',{ url:'/tests/server.php' });
+
+            Router.setRoutes({
+                'organizations' : {
+                    view : 'organizations',
+                    path : '/tests/server.php'
+                },
+                'contacts' : {
+                    view : 'contacts',
+                    path : '/tests/server.php'
+                }
+            });
+
+            Router.listener();
+            Router.go('contacts');
 
         </script>
 
